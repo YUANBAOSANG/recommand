@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+
+<configuration>
+
+
+    <settings>
+<!--     全局性地开启或关闭所有映射器配置文件中已配置的任何缓存。   -->
+        <setting name="cacheEnabled" value="true"/>
+<!--     延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态。   -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+<!--    使用列标签代替列名。实际表现依赖于数据库驱动，具体可参考数据库驱动的相关文档，或通过对比测试来观察。    -->
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25"/>
+        <setting name="defaultFetchSize" value="100"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+    </settings>
+    <typeAliases>
+        <typeAlias alias="MarsMapper" type="dao.MarsMapper"/>
+        <typeAlias alias="Mars" type="pojo.Mars"/>
+        <typeAlias alias="List" type="java.util.List"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybitstest?useUnicode=true&amp;serverTimezone=UTC&amp;useSSL=false"/>
+                <property name="username" value="yuan"/>
+                <property name="password" value="0000"/>
+                <property name="driver.encoding" value="UTF8"/>
+            </dataSource>
+
+        </environment>
+
+    </environments>
+
+    <mappers>
+<!--        <mapper resource="dao\UserMapper.xml"/>-->
+        <mapper class="dao.MarsMapper"/>
+    </mappers>
+</configuration>

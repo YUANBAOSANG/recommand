@@ -1,0 +1,9 @@
+CREATE database IF NOT EXISTS recommand ;
+use recommand;
+CREATE TABLE IF NOT EXISTS rmse (
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+    mars double NOT NULL ,
+    maxI int NOT NULL ,
+    reg double NOT NULL ,
+    `rank` int NOT NULL
+);

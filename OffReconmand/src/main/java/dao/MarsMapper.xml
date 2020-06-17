@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MarsMapper">
+    <insert id="insertMarsList" parameterType="List" useGeneratedKeys="true">
+        INSERT INTO recommand.rmse(mars, maxI, reg, `rank`) VALUES
+            <foreach collection="list" item="mars" separator=",">
+                (#{mars.mars},#{mars.maxI},#{mars.reg},#{mars.rank})
+            </foreach>
+    </insert>
+    <select id="getMarsALL" resultType="Mars" flushCache="true">
+        SELECT * FROM recommand.rmse;
+    </select>
+    <select id="getMarsMin" resultType="Mars" flushCache="true">
+        SELECT * FROM recommand.rmse WHERE mars IN (SELECT MIN(mars) FROM recommand.rmse);
+    </select>
+</mapper>
